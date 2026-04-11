@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+browser_file="$HOME/.config/apps/defaults/browser"
+
+if [[ -f "$browser_file" ]]; then
+  read -r -a browser_cmd <"$browser_file"
+else
+  browser_cmd=("chromium" "--ozone-platform=wayland")
+fi
+
+exec "${browser_cmd[@]}"

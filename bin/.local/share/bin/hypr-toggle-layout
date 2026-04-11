@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+current="$(hyprctl getoption general:layout -j | jq -r '.str')"
+
+case "$current" in
+dwindle)
+  next="master"
+  label="Master"
+  ;;
+master)
+  next="scrolling"
+  label="Scrolling"
+  ;;
+scrolling)
+  next="dwindle"
+  label="Dwindle"
+  ;;
+*)
+  next="dwindle"
+  label="Dwindle"
+  ;;
+esac
+
+hyprctl keyword general:layout "$next"
+notify-send "Workspace Layout" "$label"

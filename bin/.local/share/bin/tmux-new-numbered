@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+# Find the next available numeric session name
+i=1
+while tmux has-session -t "$i" 2>/dev/null; do
+  i=$((i + 1))
+done
+
+# Launch Ghostty on the standard default server, spinning up a fresh session
+exec ghostty -e tmux new-session -s "$i"

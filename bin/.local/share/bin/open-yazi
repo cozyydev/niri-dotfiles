@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+terminal_file="$HOME/.config/apps/defaults/terminal"
+
+if [[ -f "$terminal_file" ]]; then
+  terminal="$(<"$terminal_file")"
+else
+  terminal="ghostty"
+fi
+
+exec "$terminal" -e yazi

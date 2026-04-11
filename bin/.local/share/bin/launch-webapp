@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+defaults_dir="$HOME/.config/apps/defaults"
+browser_file="$defaults_dir/browser"
+
+if [[ -f "$browser_file" ]]; then
+  browser_exec="$(<"$browser_file")"
+else
+  browser_exec="chromium"
+fi
+
+case "$browser_exec" in
+google-chrome | google-chrome-stable | brave | brave-browser | chromium | \
+  microsoft-edge | microsoft-edge-stable | opera | vivaldi | vivaldi-stable | \
+  helium)
+  ;;
+*)
+  browser_exec="chromium"
+  ;;
+esac
+
+if command -v uwsm-app >/dev/null 2>&1; then
+  exec setsid uwsm-app -- "$browser_exec" --app="$1" "${@:2}"
+else
+  exec setsid "$browser_exec" --app="$1" "${@:2}"
+fi

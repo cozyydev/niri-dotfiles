@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+terminal_file="$HOME/.config/apps/defaults/terminal"
+
+if [[ -f "$terminal_file" ]]; then
+  read -r -a terminal_cmd <"$terminal_file"
+else
+  terminal_cmd=("ghostty")
+fi
+
+cwd="$("$HOME/.local/share/bin/get-terminal-cwd")"
+
+exec "${terminal_cmd[@]}" --working-directory="$cwd" -e tmux new

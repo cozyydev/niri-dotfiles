@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+socket="/tmp/mpvsocket"
+
+json_escape() {
+  python -c 'import json,sys; print(json.dumps(sys.argv[1]))' "$1"
+}
+
+[ $# -gt 0 ] || exit 1
+
+if [ ! -S "$socket" ]; then
+  first="$1"
+  shift
+  mpv --force-window=yes --idle=yes --input-ipc-server="$socket" "$first" &
+  sleep 0.5
+fi
+
+for file in "$@"; do
+  escaped="$(json_escape "$file")"
+  printf '{ "command": ["loadfile", %s, "append-play"] }\n' "$escaped"
+done | socat - "$socket"

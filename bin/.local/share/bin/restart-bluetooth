@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+echo -e "Restarting Bluetooth service..."
+sudo systemctl restart bluetooth &&
+  echo "Bluetooth service restarted."

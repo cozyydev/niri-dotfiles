@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+echo -e "Restarting Pipewire ..."
+
+systemctl --user restart wireplumber pipewire pipewire-pulse
