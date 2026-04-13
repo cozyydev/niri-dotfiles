@@ -4,12 +4,14 @@ layout {
         active-color   "#bd93f9"
         inactive-color "#282a36"
         urgent-color   "#ff5555"
+        width 2
     }
 
     border {
         active-color   "#bd93f9"
         inactive-color "#282a36"
         urgent-color   "#ff5555"
+        width 2
     }
 
     shadow {

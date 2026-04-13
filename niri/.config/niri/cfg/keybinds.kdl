@@ -18,8 +18,8 @@ binds {
     Mod+Shift+CTRL+F                    hotkey-overlay-title="Firefox Private" { spawn "uwsm-app" "--" "firefox" "--private-window"; }
     Mod+CTRL+Shift+Y                    hotkey-overlay-title="Open Webapp: youtube" { spawn "~/.local/share/bin/launch-webapp" "https://youtube.com"; }
     Mod+CTRL+Shift+T                    hotkey-overlay-title="Open Webapp: T3 chat" { spawn "~/.local/share/bin/launch-webapp" "https://t3.chat"; }
-    Mod+CTRL+Shift+U                    hotkey-overlay-title="Open Webapp: T3 chat" { spawn "~/.local/share/bin/launch-webapp" "https://192.168.10.1/protect/dashboard"; }
-
+    Mod+CTRL+Shift+U                    hotkey-overlay-title="Open Webapp: Unifi Protect" { spawn "~/.local/share/bin/launch-webapp" "https://192.168.10.1/protect/dashboard"; }
+    Mod+CTRL+Shift+ALT+Y                hotkey-overlay-title="Yazi" { spawn "ghostty" "-e"; }
 
     // Please choose your own file manager.
     Mod+F                               hotkey-overlay-title="File Manager: Nautilus" { spawn "nautilus"; }
