@@ -16,12 +16,12 @@ binds {
     Mod+ALT+L                           hotkey-overlay-title="Lock Screen: noctalia lock" { spawn-sh "qs -c noctalia-shell ipc call lockScreen lock"; }
     Mod+Shift+Q                         hotkey-overlay-title="Session Menu: noctalia sessionMenu" { spawn-sh "qs -c noctalia-shell ipc call sessionMenu toggle"; }
     Mod+Shift+CTRL+F                    hotkey-overlay-title="Firefox Private" { spawn "firefox" "--private-window"; }
-    Mod+CTRL+Shift+G                    hotkey-overlay-title="Open Webapp: google messages" { spawn "~/.local/share/bin/launch-webapp" "https://messages.google.com"; }
+    Mod+CTRL+Shift+G                    hotkey-overlay-title="Open Webapp: google messages" { spawn "~/.local/share/bin/launch-webapp" "https://messages.google.com/web"; }
     Mod+CTRL+Shift+S                    hotkey-overlay-title="Signal Messenger" { spawn "signal-desktop"; }
     Mod+CTRL+Shift+Y                    hotkey-overlay-title="Open Webapp: youtube" { spawn "~/.local/share/bin/launch-webapp" "https://youtube.com"; }
     Mod+CTRL+Shift+T                    hotkey-overlay-title="Open Webapp: T3 chat" { spawn "~/.local/share/bin/launch-webapp" "https://t3.chat"; }
     Mod+CTRL+Shift+U                    hotkey-overlay-title="Open Webapp: Unifi Protect" { spawn "~/.local/share/bin/launch-webapp" "https://192.168.10.1/protect/dashboard"; }
-    Mod+CTRL+Shift+ALT+Y                hotkey-overlay-title="Yazi" { spawn "ghostty" "-e"; }
+    Mod+CTRL+Shift+ALT+Y                hotkey-overlay-title="Yazi" { spawn "ghostty" "-e" "yazi" "~"; }
 
     // Please choose your own file manager.
     Mod+F                               hotkey-overlay-title="File Manager: Nautilus" { spawn "nautilus"; }

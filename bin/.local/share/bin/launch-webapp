@@ -11,16 +11,30 @@ fi
 
 case "$browser_exec" in
 google-chrome | google-chrome-stable | brave | brave-browser | chromium | \
-  microsoft-edge | microsoft-edge-stable | opera | vivaldi | vivaldi-stable | \
-  helium)
+  microsoft-edge | microsoft-edge-stable | opera | vivaldi | \
+  vivaldi-stable | helium | helium-browser | helium-browser-bin)
   ;;
 *)
   browser_exec="chromium"
   ;;
 esac
 
-if command -v uwsm-app >/dev/null 2>&1; then
-  exec setsid uwsm-app -- "$browser_exec" --app="$1" "${@:2}"
-else
-  exec setsid "$browser_exec" --app="$1" "${@:2}"
-fi
+browser_args=()
+
+case "$browser_exec" in
+helium | helium-browser-bin)
+  browser_exec="helium-browser"
+  browser_args=(
+    --enable-features=WebUIDarkMode
+    --force-dark-mode
+  )
+  ;;
+helium-browser)
+  browser_args=(
+    --enable-features=WebUIDarkMode
+    --force-dark-mode
+  )
+  ;;
+esac
+
+exec setsid "$browser_exec" "${browser_args[@]}" --app="$1" "${@:2}"
