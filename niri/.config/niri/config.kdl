@@ -9,3 +9,6 @@ include "./cfg/misc.kdl"
 
 include "./noctalia.kdl"
 
+output "DP-2" {
+  mode "3440x1440@144.000"
+}

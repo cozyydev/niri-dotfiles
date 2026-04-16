@@ -12,7 +12,7 @@ binds {
     // Mod+Return                          hotkey-overlay-title="Open Terminal: Ghostty" { spawn "ghostty"; }
     Mod+Return                          hotkey-overlay-title="Open Terminal: tmux" { spawn "~/.local/share/bin/tmux-new-numbered"; }
     Mod+CTRL+Return                     hotkey-overlay-title="Open App Launcher: noctalia launcher" { spawn-sh "qs -c noctalia-shell ipc call launcher toggle"; }
-    Mod+B                               hotkey-overlay-title="Open Browser: chromium" { spawn "chromium"; }
+    Mod+B                               hotkey-overlay-title="Open Browser: helium" { spawn "helium-browser"; }
     Mod+ALT+L                           hotkey-overlay-title="Lock Screen: noctalia lock" { spawn-sh "qs -c noctalia-shell ipc call lockScreen lock"; }
     Mod+Shift+Q                         hotkey-overlay-title="Session Menu: noctalia sessionMenu" { spawn-sh "qs -c noctalia-shell ipc call sessionMenu toggle"; }
     Mod+Shift+CTRL+F                    hotkey-overlay-title="Firefox Private" { spawn "firefox" "--private-window"; }
@@ -119,7 +119,7 @@ binds {
     // ─── Layout Controls ───
     Mod+Shift+CTRL+ALT+F                { expand-column-to-available-width; }
     Mod+Shift+CTRL+ALT+H                { set-column-width "50%"; }
-    Mod+CTRL+C                          { center-visible-columns; }
+    Mod+C                               { center-visible-columns; }
     Mod+Minus                           { set-column-width "-10%"; }
     Mod+Equal                           { set-column-width "+10%"; }
     Mod+Shift+Minus                     { set-window-height "-10%"; }
