@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+echo -e "Restarting Noctalia ..."
+
+nohup qs -c noctalia-shell > /dev/null 2>&1 &
