@@ -22,8 +22,9 @@ binds {
     Mod+CTRL+Shift+T                    hotkey-overlay-title="Open Webapp: T3 chat" { spawn "~/.local/share/bin/launch-webapp" "https://t3.chat"; }
     Mod+CTRL+Shift+U                    hotkey-overlay-title="Open Webapp: Unifi Protect" { spawn "~/.local/share/bin/launch-webapp" "https://192.168.10.1/protect/dashboard"; }
     Mod+CTRL+Shift+ALT+Y                hotkey-overlay-title="Yazi" { spawn "ghostty" "-e" "yazi" "~"; }
-
-    // Please choose your own file manager.
+    Mod+Space                           hotkey-overlay-title="Noctalia Launcher" { spawn-sh "qs -c noctalia-shell ipc call launcher toggle"; }
+    Mod+Comma                           hotkey-overlay-title="Noctalia Control Center" { spawn-sh "qs -c noctalia-shell ipc call controlCenter toggle"; }
+    Mod+S                               hotkey-overlay-title="Noctalia Settings" { spawn-sh "qs -c noctalia-shell ipc call settings toggle"; }
     Mod+F                               hotkey-overlay-title="File Manager: Nautilus" { spawn "nautilus"; }
 
     // ─── Media Controls ───
@@ -119,7 +120,7 @@ binds {
     // ─── Layout Controls ───
     Mod+Shift+CTRL+ALT+F                { expand-column-to-available-width; }
     Mod+Shift+CTRL+ALT+H                { set-column-width "50%"; }
-    Mod+C                               { center-visible-columns; }
+    Mod+CTRL+C                               { center-visible-columns; }
     Mod+Minus                           { set-column-width "-10%"; }
     Mod+Equal                           { set-column-width "+10%"; }
     Mod+Shift+Minus                     { set-window-height "-10%"; }

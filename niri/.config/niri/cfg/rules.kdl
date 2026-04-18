@@ -16,6 +16,15 @@
        open-focused false
     }
 
+    window-rule {
+      // Matches Firefox PiP windows
+      match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+      open-floating true
+      // Prevents it from stealing focus away from your typing
+      open-focused false
+    }
+
+
     layer-rule {
         match namespace="^noctalia-wallpaper*"
         place-within-backdrop true

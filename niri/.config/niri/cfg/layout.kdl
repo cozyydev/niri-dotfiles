@@ -10,6 +10,10 @@
             proportion 0.66667
         }
 
+        focus-ring {
+          width 1.5
+        }
+
         struts {
           left 2
           right 2

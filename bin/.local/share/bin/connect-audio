@@ -1,0 +1,80 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+MAC="F4:2B:7D:57:39:A0"
+CARD="bluez_card.F4_2B_7D_57_39_A0"
+TMP_PROFILE="headset-head-unit-cvsd"
+FINAL_PROFILE="a2dp-sink"
+
+restart_audio() {
+  echo "Restarting PipeWire / WirePlumber..."
+  systemctl --user restart wireplumber pipewire pipewire-pulse
+}
+
+wait_for_card() {
+  local tries=30
+  local delay=1
+
+  for ((i = 1; i <= tries; i++)); do
+    if pactl list cards short | awk '{print $2}' | grep -qx "$CARD"; then
+      return 0
+    fi
+    sleep "$delay"
+  done
+
+  return 1
+}
+
+set_profile() {
+  local profile="$1"
+  local tries=5
+  local delay=1
+
+  for ((i = 1; i <= tries; i++)); do
+    if pactl set-card-profile "$CARD" "$profile"; then
+      return 0
+    fi
+    sleep "$delay"
+  done
+
+  return 1
+}
+
+echo "Connecting to SoundCore 2..."
+bluetoothctl connect "$MAC" || true
+sleep 3
+
+echo "Restart #1"
+restart_audio
+
+echo "Waiting for Bluetooth card..."
+wait_for_card || {
+  echo "Bluetooth card not found: $CARD"
+  exit 1
+}
+
+sleep 2
+echo "Switching to temporary profile: $TMP_PROFILE"
+set_profile "$TMP_PROFILE" || {
+  echo "Failed to set profile: $TMP_PROFILE"
+  exit 1
+}
+
+sleep 2
+echo "Restart #2"
+restart_audio
+
+echo "Waiting for Bluetooth card again..."
+wait_for_card || {
+  echo "Bluetooth card not found after second restart: $CARD"
+  exit 1
+}
+
+sleep 2
+echo "Switching to final profile: $FINAL_PROFILE"
+set_profile "$FINAL_PROFILE" || {
+  echo "Failed to set profile: $FINAL_PROFILE"
+  exit 1
+}
+
+echo "Finished successfully."
