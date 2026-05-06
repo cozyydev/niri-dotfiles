@@ -11,8 +11,8 @@
     }
 
     cursor {
-        xcursor-theme "capitaine-cursors"
-        xcursor-size 24
+        xcursor-theme "Future-cyan-cursors"
+        xcursor-size 30
     }
 
     debug {
