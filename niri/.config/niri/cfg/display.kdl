@@ -3,7 +3,16 @@
 // You will have to remove "/-" and edit it before it takes effect.
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Outputs
 
-/- output "DP-1" {
-    mode "2560x1440@359.979" // Set resolution and refresh rate
-    scale 1 // No scaling (use 2 for HiDPI)
+output "DP-2" {
+    mode "3440x1440@144.000" // Set resolution and refresh rate
+    scale 1.0 // No scaling (use 2 for HiDPI)
+    position x=0 y=0 // Position on the screen
 }
+
+output "DP-1" {
+  mode "3440x1440@159.962"
+  scale 1.0
+  position x=0 y=1440
+}
+
+
